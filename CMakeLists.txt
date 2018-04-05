@@ -86,3 +86,14 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/DBoW2Config.cmake"
 install(FILES "${PROJECT_BINARY_DIR}/DBoW2Config.cmake" 
   DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/DBoW2/)
 install(DIRECTORY ${DEPENDENCY_INSTALL_DIR}/ DESTINATION ${CMAKE_INSTALL_PREFIX} OPTIONAL)
+
+
+# make an uninstall target 
+configure_file(
+ 	"${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+  	"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+  	IMMEDIATE @ONLY
+)
+
+add_custom_target(uninstall
+  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
